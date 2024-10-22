@@ -29,12 +29,13 @@ def main():
 
     base = 11
     x = zad2.simple_moving_average(x, base)
-    y = zad2.simple_moving_average(y, base)
-    # y = y[5:len(y)-5]
-
+    # y = zad2.simple_moving_average(y, base)
+    y = y[5:-5]
+    print(len(y))
     b02, b12 = prosta_regresji(x, y)
     x2 = np.linspace(-1, 3.5, 1000)
     y2 = b02 + b12 * x2
+
 
     plt.plot(x2, y2, color='green', label='prosta regresji')
     plt.scatter(x, y, label='dane')
