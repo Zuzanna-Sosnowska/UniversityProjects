@@ -14,7 +14,7 @@ def simple_moving_average(x, base):
     p = int((base - 1) / 2)
     t = np.zeros(len(x) - 2*p)
     for i in range(len(t)):
-        t[i] = np.sum(x[i:i+2*p]) * 1 / base
+        t[i] = np.sum(x[i:i+base]) * 1 / base
     return t
 
 
