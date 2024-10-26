@@ -9,6 +9,11 @@ def calculate_upper_triangular_matrix(A, b):
                 c = True
                 continue
             if c:
+                a = calculate_nullify_multiplier_for_index(
+                    row_to_nullify=A[row],
+                    base_row=A[column],
+                    index=column
+                )
                 a = multiply_and_change_rows(A[row], A[column], column)
                 change_elements(b, row, column, a)
         if not c:
@@ -36,6 +41,10 @@ def swap_rows(A, i, j):
     A[i] = row_copy
 
 
+def calculate_nullify_multiplier_for_index(row_to_nullify, base_row, index):
+    return row_to_nullify[index] / base_row[index]
+
+
 def multiply_and_change_rows(row1, row2, j):
     if len(row1) != len(row2):
         raise ValueError("Rows must have same length")
@@ -56,6 +65,7 @@ def swap_elements(b, i, j):
     number_copy = b[i]
     b[i] = b[j]
     b[j] = number_copy
+
 
 def change_elements(b, i, j, a):
     b[i] = b[i] - a * b[j]
@@ -102,14 +112,7 @@ def multiply_matrix_by_vector(A, B):
 
 
 def identity_matrix(n):
-    I = [[0 for _ in range(n)] for _ in range(n)]
-    for i in range(n):
-        for j in range(n):
-            if i == j:
-                I[i][j] = 1
-            else:
-                I[i][j] = 0
-    return I
+    return [[1 if i == j  else 0 for i in range(n)] for j in range(n)]
 
 
 def multiply_row(row, a):
@@ -138,8 +141,6 @@ def inverse_matrix(A):
         for i in range(j):
             a = multiply_and_change_rows(A[i], A[j], j)
             change_rows(I[i], I[j], a)
-    for j in range(n):
-        multiply_columns(I[j], 1 / A[j][j])
-        A[j][j] /= A[j][j]
-
-    return I, A
+        multiply_row(I[j], 1 / A[j][j])
+        multiply_row(A[j],1 / A[j][j])
+    return I
