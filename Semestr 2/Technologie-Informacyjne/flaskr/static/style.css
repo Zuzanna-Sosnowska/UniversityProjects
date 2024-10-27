@@ -1,0 +1,57 @@
+body {
+    background-color: wheat;
+    text-align: left;
+    font-family: Arial, sans-serif;
+    margin: 50px 280px;
+}
+
+h1 {
+    font-family: Calibri, sans-serif;
+    color: #4c6d9e;
+    text-decoration: underline;
+    font-size: 48px;
+    text-align: center;
+  }
+
+h2 {
+  color: #6f98c6e2;
+}
+
+p {
+  color: #333;
+}
+
+ul {
+  list-style-type: square;
+}
+
+h3 {
+  color: #333;
+  font-style: italic;
+}
+
+h4 {
+  color: #333;
+}
+
+code {
+  font-family: Courier, monospace;
+}
+
+img {
+    position: absolute;
+    border-radius: 2rem;
+    text-align: center;
+}
+
+.data-input, .info-box {
+    text-align: center;
+    padding: 1rem;
+}
+
+.input-description {
+    padding-right: .5rem;
+    margin-left: 2rem;
+}
+
+

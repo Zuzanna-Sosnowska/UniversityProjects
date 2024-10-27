@@ -1,0 +1,117 @@
+.instruction{
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  margin-top: 100px;
+}
+
+p{
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+h1 {
+    font-size: 40px;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+h2 {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+h3 {
+  color: #333;
+  font-style: italic;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+h4 {
+  color: #333;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+label{
+    margin: 20px;
+}
+header {
+    font-size: 60px;
+    text-align: center;
+    padding: 20px;
+    background-color: grey;
+}
+header a {
+    color: whitesmoke;
+    text-decoration: none;
+}
+nav {
+    background-color: wheat;
+}
+nav ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    position: relative;
+}
+nav ul li {
+    display: inline-block;
+    width: 24.75%;
+    text-align: center;
+    background-color: wheat;
+}
+nav a {
+    display: block;
+    padding: 0 10px;
+    color: black;
+    line-height: 50px;
+    font-size: 20px;
+    text-decoration: none;
+}
+nav ul ul {
+    display: none;
+    position: absolute;
+    top: 50px;
+    
+}
+nav a:hover {
+    background-color: black;
+    color: white;
+}
+nav ul li:hover > ul {
+    display: block;
+}
+nav ul ul li{
+    width: 368px;
+    float: none;
+    display: list-item;
+    position: relative;
+    background-color: whitesmoke; 
+
+}
+nav ul ul ul li {
+    position: relative;
+    background-color: whitesmoke;
+    top: -50px;
+    width: 372.5px;
+    left: 368px;
+}
+.intro {
+    margin: 120px;
+    line-height: 30px;
+}
+.my-type {
+    list-style-type: none;
+    padding: 5;
+    margin: 0;
+}
+.my-type li {
+    padding: 5px;
+}
+.my-type li::before {
+    content: ">";
+    padding-right: 8px;
+    color: black; 
+  }
+

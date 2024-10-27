@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Wykresy</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="../static/projekt.css">
+</head>
+<body>
+<title>
+    Wszystko o wielomianach
+</title>
+</head>
+
+<body>
+    <header><a href="home">Wszystko o wielomianach</a></header>
+
+    <div>
+        <nav>
+            <ul>
+                <li><a href="about">O projekcie</a></li>
+                <li><a href="authors">O autorach</a></li>
+                <li><a href="theory">Wielomiany</a>
+                <ul>
+                    <li><a href="theory">Teoria</a></li>
+                    <li><a href="examples">Zadania</a></li>
+                </ul>
+                </li>
+                <li><a href="plots">Generator</a></li>
+            </ul>
+        </nav>
+    </div>
+    <h1>Generator wykresów</h1>
+    <div class="info-box">
+        <p class="instruction">Aby generator zwrócił wykres należy podawać ciągiem współczynniki wielomianu, rozdzielając je TYLKO średnikiem
+            (nie należy wstawiać spacji).
+        Współczynniki powinny występować w kolejności od najmniejszego do największego, przykładowo po wprowadzeniu do
+        generatora "3;0;1" otrzymamy wykres funkcji \(3 + x^2\).</p>
+    </div>
+    <div class="data-input">
+        <form action="" method="POST">
+            <label>
+                Podaj parametr:
+                <input type="text" id="variable" name="variable">
+            </label>
+          <input type="submit" value="Wyślij">
+        </form>
+    </div>
+    <div>
+        <img src="../static/plots_img/plot.png" alt="plot">
+    </div>
+</body>
+</html>

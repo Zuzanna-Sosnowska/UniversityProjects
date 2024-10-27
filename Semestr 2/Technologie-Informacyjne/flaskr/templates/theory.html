@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang=”pl”>
+<head>
+    <link rel="stylesheet" type="text/css" href="../static/projekt.css">
+     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <meta charset=”utf-8”>
+<title>
+    Wszystko o wielomianach
+</title>
+</head>
+
+<body>
+    <header><a href="home">Wszystko o wielomianach</a></header>
+
+    <div>
+        <nav>
+            <ul>
+                <li><a href="about">O projekcie</a></li>
+                <li><a href="authors">O autorach</a></li>
+                <li><a href="theory">Wielomiany</a>
+                <ul>
+                    <li><a href="theory">Teoria</a></li>
+                    <li><a href="examples">Zadania</a></li>
+                </ul>
+                </li>
+                <li><a href="plots">Generator</a></li>
+            </ul>
+        </nav>
+    </div>
+
+
+<h2>Definicja</h2>
+<p>Wielomianem stopnia n jednej zmiennej x ∈ R nazywamy funkcję W określoną wzorem</p>
+<p>\(W(x) = a_nx^n + a_{n-1}x^{n-1} + a_{n-2}x^{n-2} + ... + a_1x + a_0\),</p>
+<p>gdzie \(n ∈ N+\) oraz \(a_n, a_{n-1}, ..., a_1, a_0 ∈ R\) i  \(a_n ≠ 0\).</p>
+<p>Liczby \(a_0, a_1, a_2, ..., a_n\) nazywamy współczynnikami wielomianu. Wielomian stopnia n ma n+1 współczynników.</p>
+
+<h2>Jednomiany</h2>
+<p>\(a_nx^n, a_{n-1}x^{n-1}, ..., a_1x^1, a_0\) nazywamy wyrazami wielomianu W(x).</p>
+
+<h2>Stopień wielomianu</h2>
+<p>Stopniem wielomianu (n) nazywamy największy ze stopni jego wyrazów.</p>
+
+<h2>Własności wielomianów</h2>
+<ul>
+    <li>Wielomian stopnia zerowego to funkcja stała określona wzorem W(x) = a, gdzie a ≠ 0 i x ∈ R.</li>
+    <li>Gdy \(a_0 = a_1 = a_2 = ... = a_n = 0\), to funkcję stałą W(x) ≡ 0 nazywamy wielomianem zerowym. Wielomian zerowy nie ma określonego stopnia. Zapis symboliczny: W(x) ≡ 0 ⇔ ∀x ∈ R, W(x) = 0.</li>
+</ul>
+
+<h2>Działania na wielomianach</h2>
+<p>W zbiorze wielomianów wykonalne są działania: dodawania, odejmowania i mnożenia wielomianów.</p>
+
+<h2>Dodawanie i odejmowanie wielomianów</h2>
+
+<h3>Przykład:</h3>
+<p>Mamy dwa wielomiany:</p>
+<p>\(W(x) = 2x^3+ 3x^2 - x + 5\)</p>
+<p>\(P(x) = x^2 - 4x + 2\)</p>
+
+<h4>Dodawanie:</h4>
+<p>\(W(x) + P(x) = (2x^3 + 3x^2 - x + 5) + (x^2 - 4x + 2)
+  = 2x^3 + (3x^2 + x^2) + (-x - 4x) + (5 + 2) = 2x^3 + 4x^2 - 5x + 7\)</p>
+
+<h4>Odejmowanie:</h4>
+<p>\(W(x) - P(x) = (2x^3 + 3x^2 - x + 5) - (x^2 - 4x + 2)
+  = 2x^3 + (3x^2 - x^2) + (-x + 4x) + (5 - 2) = 2x^3 + 2x^2 + 3x + 3\)</p>
+
+
+<h2>Mnożenie wielomianów</h2>
+
+<h3>Teoria:</h3>
+<p>Mnożenie wielomianów jest wykonywane poprzez pomnożenie każdego wyrazu z jednym wielomianu przez każdy wyraz z drugiego wielomianu i odpowiednie zsumowanie wyników.</p>
+<p>Twierdzenie mówi, że iloczynem wielomianów stopnia a i b jest wielomian stopnia (a+b): st. W(m×n) = st. W(m) + st. W(n).</p>
+<p>Przykładowo, dla wielomianów:</p>
+<p>\(W(x) = a_nx^n + a_{n-1}x^{n-1} +  ... + a_1x + a_0\),</p>
+<p>\(P(x) = b_mx^m + b_{m-1}x^{m-1} +  ... + b_1x + b_0\),</p>
+<p>Mnożenie W(x) * P(x) daje wielomian:</p>
+<p>\(R(x) = c_{nm}x^{n+m} + c_{nm-1}x^{n+m-1} + ... + c_{11}x^{n+1} + c_{10}x^n + c_{0m}x^m + c_{0m-1}x^{m-1} + ... + c_{01}x^1 + c_{00}\)</p>
+<p>gdzie \(c_{ij} = a_i * b_j\) dla i = 0, 1, ..., n i j = 0, 1, ..., m.</p>
+<p>Zgodnie z twierdzeniem, stopień wielomianu R(x) będzie równy sumie stopni wielomianów W(x) i P(x): st. R(x) = st. W(x) + st. P(x).</p>
+
+<h3>Przykład:</h3>
+<p>Mamy dwa wielomiany:</p>
+<p>\(W(x) = 2x^3+ 3x^2 - x + 5\)</p>
+<p>\(P(x) = x^2 - 4x + 2\)</p>
+
+<h4>Mnożenie:</h4>
+<p>\(W(x) * P(x) = (2x^3 + 3x^2 - x + 5) * (x^2 - 4x + 2)\)
+<p>=\((2x^3 * x^2) + (2x^3 * (-4x)) + (2x^3 * 2) + (3x^2* x^2) + (3x^2 * (-4x)) + (3x^2 * 2) + (-x * x^2) + (-x * (-4x)) + (-x * 2) + (5 * x^2) + (5 * (-4x)) + (5 * 2)\)</p>
+<p>\(= 2x^5 - 8x^4 + 4x^3 + 3x^4 - 12x^3 + 6x^2 - x^3 + 4x^2 - 2x + 5x^2 - 20x + 10\)</p>
+<p>\(= 2x^5 - 5x^4 - 3x^3 + 15x^2 - 22x + 10\)</p>
+<p>Zgodnie z twierdzeniem, stopień wynikowego wielomianu R(x) wynosi (3 + 2) = 5, co jest zgodne z wynikiem.</p>
+<p>Dzielenie wielomianów jest bardziej skomlkowaną operacją i jest przedstawione niżej.</p>
+
+
+<h2>Rozkład wielomianu na czynniki pierwsze</h2>
+
+<h3>Teoria:</h3>
+<p>Rozkładanie wielomianu na czynniki polega na takich działaniach na nim, aby końcowo stał się iloczynem wielomianów o jak najmniejszych potęgach, których nie da się już dalej rozłożyć.</p>
+<p>Każdy wielomian można rozłożyć na czynniki stopnia co najwyżej drugiego, a rozkład ten jest jednoznaczny.</p>
+<p>Aby rozłożyć wielomian, można stosować metody takie jak wyłączanie wspólnego czynnika przed nawias, grupowanie wyrazów, wzory skróconego mnożenia oraz rozkład wielomianu o potędze 2 poprzez wyznaczenie jego postaci iloczynowej za pomocą "delty".</p>
+<p>Jeżeli o wielomianie stopnia trzeciego \(W(x) = ax^3 + bx^2 + cx + d\) wiadomo, że ma 3 pierwiastki, to jego wzór można zapisać w postaci iloczynowej \(W(x) = a(x - x_1)(x - x_2)(x - x_3)\) - analogicznie do postaci iloczynowej funkcji kwadratowej. Zasada działa tak samo w przypadku wielomianów wyższych stopni.</p>
+
+<h3>Przykład:</h3>
+<p>Mamy wielomian:</p>
+<p>\(W(x) = 2x^4 - x^3 + 2x - 1\)</p>
+
+<h4>Rozkład na czynniki pierwsze:</h4>
+<p>\(W(x) = (x + 1)(x^2 - x + 1)(2x - 1)\)</p>
+<p>Wielomian został rozłożony na trzy czynniki pierwsze.</p>
+
+<h3>Inne przykłady:</h3>
+<p>Rozkład wielomianu na czynniki pierwsze:</p>
+<ul>
+    <li>\(x^2 - 4 = (x - 2)(x + 2)\)</li>
+    <li>\(3x^3 - 9x^2 + 6x = 3x(x - 1)(x - 2)\)</li>
+    <li>\(4x^2 - 12x + 9 = (2x - 3)(2x - 3)\)</li>
+</ul>
+
+<h2>Równania wielomianowe</h2>
+
+<h3>Teoria:</h3>
+<p>Rozkład wielomianu W(x) wykorzystuje się do wyznaczenia pierwiastków wielomianu, a więc do rozwiązywania równań W(x) = 0.</p>
+
+<h3>Przykład:</h3>
+<p>Mamy wielomian:</p>
+<p>\(W(x) = x^2 - 4\)</p>
+<p>Chcemy rozwiązać równanie W(x) = 0.</p>
+
+<h4>Rozwiązanie:</h4>
+<p>Aby rozwiązać równanie, równamy wielomian W(x) do zera:</p>
+<p>\(x^2 - 4 = 0\)</p>
+<p>Teraz rozkładamy wielomian na czynniki:</p>
+<p>\((x - 2)(x + 2) = 0\)</p>
+<p>Teraz równanie sprowadza się do znalezienia wartości x, dla których iloczyn czynników wynosi zero.</p>
+<p>Rozwiązania równania to x = 2 i x = -2.</p>
+
+<h3>Inne przykłady:</h3>
+<p>Rozwiązywanie równań wielomianowych:</p>
+<ul>
+    <li>\(x^3 - 6x^2 + 9x = 0\) - Pierwiastkiem jest x = 0, a także x = 3 (podwójny pierwiastek)</li>
+    <li>\(2x^2 + 5x - 3 = 0\) - Pierwiastkami są x = 1/2 i x = -3</li>
+    <li>\(x^2 + 4 = 0\) - Brak pierwiastków rzeczywistych, pierwiastki to x = 2i i x = -2i (liczby urojone)</li>
+</ul>
+
+<h2>Dzielenie wielomianów</h2>
+
+<h3>Teoria:</h3>
+<p>Każdy wielomian W(x) można zapisać w postaci W(x) = P(x) * Q(x) + R(x), gdzie stopień reszty z dzielenia R(x) musi być niższy niż stopień dzielnika.</p>
+<p>Jeśli wielomian W(x) można rozłożyć do postaci W(x) = P(x) * Q(x), to mówimy, że wielomian W(x) jest podzielny przez wielomiany P(x) i Q(x) (przy założeniu, że P(x) i Q(x) nie są zerami).</p>
+
+<h3>Przykład 1:</h3>
+<p>Mamy wielomian:</p>
+<p>\(W(x) = x^3 - 2x^2 - x + 2\)</p>
+<p>Chcemy podzielić ten wielomian przez:</p>
+<p>\(D(x) = x - 1\)</p>
+
+<h4>Rozwiązanie:</h4>
+<p>Aby podzielić wielomian W(x) przez D(x), wykonujemy dzielenie wielomianów:</p>
+<p>
+       \begin{aligned}\dfrac{x^{2}+x}{\left( x^{3}-2x^{2}-x+2\right) :\left( x-1\right) }\\
+    -x^{3}+x^{2}\\
+    \overline{=x^{2}}-x+2\\
+    -\dfrac{x^{2}+x}{\dfrac{-}{}=2}\end{aligned}
+</p>
+<p>Podzieliliśmy wielomian W(x) przez D(x) i otrzymaliśmy wynik:</p>
+<p>\(W(x) = (x^2 + x + 1)(x - 1) + (-4x + 2)\)</p>
+<p>Reszta z dzielenia to \((-4x + 2)\).</p>
+
+<h3>Przykład 2:</h3>
+<p>Mamy wielomian:</p>
+<p>\(W(x) = x^2 + x + 1\)</p>
+<p>Chcemy podzielić ten wielomian przez:</p>
+<p>\(P(x) = x^2 + x + 1\)</p>
+
+<h4>Rozwiązanie:</h4>
+<p>Aby podzielić wielomian W(x) przez P(x), wykonujemy dzielenie wielomianów:</p>
+<p>
+  <pre>
+          1
+     ___________
+  x<sup>2</sup> + x + 1 | x<sup>2</sup> + x + 1
+                         - (x<sup>2</sup> + x + 1)
+                         ___________
+                                  0
+  </pre>
+</p>
+<p>Podzieliliśmy wielomian W(x) przez P(x) i otrzymaliśmy wynik:</p>
+<p>\(W(x) = (x^2 + x + 1)(x^2 + x + 1) + 0\)</p>
+<p>Reszta z dzielenia wynosi 0, co oznacza, że wielomian W(x) jest podzielny przez P(x).</p>
+
+<h2>Twierdzenie Bézouta</h2>
+
+<h3>Teoria:</h3>
+<p>Twierdzenie Bézouta mówi, że jeśli wielomian W(x) jest podzielny przez dwumian (x - a), gdzie a ≠ 0, to a jest równocześnie pierwiastkiem wielomianu W(x). Zatem W(a) = 0.</p>
+
+<h3>Zastosowanie:</h3>
+<p>Twierdzenie Bézouta pozwala nam znaleźć pierwiastki wielomianu poprzez sprawdzenie, czy dany dwumian jest jego dzielnikiem.</p>
+
+<h3>Przykład:</h3>
+<p>Mamy wielomian \(W(x) = 2x^3 - 5x^2 + 3x - 2\). Sprawdźmy, czy (x - 1) jest dzielnikiem tego wielomianu.</p>
+
+<h4>Rozwiązanie:</h4>
+<p>Aby sprawdzić, czy (x - 1) jest dzielnikiem W(x), obliczmy W(1):</p>
+<p>\(W(1) = 2(1)^3 - 5(1)^2 + 3(1) - 2 = 0.\)</p>
+
+<p>Ponieważ W(1) = 0, (x - 1) jest dzielnikiem wielomianu W(x) i 1 jest jego pierwiastkiem.</p>
+
+<h2>Twierdzenie o pierwiastkach wielomianu</h2>
+<p>Wielomian jednej zmiennej stopnia n ma co najwyżej n pierwiastków rzeczywistych.</p>
+
+<h2>Twierdzenie o pierwiastkach wielomianu nieparzystego stopnia</h2>
+<p>Wielomian jednej zmiennej nieparzystego stopnia ma co najmniej jeden pierwiastek.</p>
+
+
+
+<title>Wykresy wielomianów</title>
+<style>
+  .wykres {
+    width: auto;
+    height: 300px;
+  }
+</style>
+</head>
+<body>
+<h2>Wykresy wielomianów</h2>
+
+<h3>Wykresy wielomianów stopnia pierwszego i drugiego:</h3>
+<p>Wykresem wielomianu stopnia pierwszego \(w(x) = ax + b\) jest prosta.</p>
+<img src="../static/plots_img/prosta.jpg" alt="Wykres wielomianu stopnia pierwszego" class="wykres">
+
+<p>Wykresem wielomianu stopnia drugiego \(w(x) = ax^2 + bx + c jest\) parabola.</p>
+<img src="../static/plots_img/parabola.jpg" alt="Wykres wielomianu stopnia drugiego" class="wykres">
+
+<p>Aby narysować dokładny wykres wielomianu wyższego stopnia często trzeba skorzystać z komputera, bądź też kalkulatora graficznego, gdyż jest to bardzo pracochłonne. Można natomiast naszkicować przybliżony kształt wykresu, dzięki znajomości pierwiastków wielomianu</p>
+
+<h3>Przykłady wykresów wielomianów:</h3>
+<p>Przykład 1: \(y = x(x + 1)(x - 2)\)</p>
+<img src="../static/plots_img/wykres1.jpg" alt="Wykres wielomianu y = x(x + 1)(x - 2)" class="wykres">
+<p class="podpis">Wykres wielomianu \(y = x(x + 1)(x - 2)\)</p>
+
+
+<p>Przykład 2: \(y = x(x + 1)(x - 3)(x + 2)\)</p>
+<img src="../static/plots_img/wykres2.jpg" alt="Wykres wielomianu y = x(x + 1)(x - 3)(x + 2)" class="wykres">
+<p class="podpis">Wykres wielomianu \(y = x(x + 1)(x - 3)(x + 2)\)</p>
+
+
+<p>Przykład 3: \(y = -x(x + 2)(x - 3)\)</p>
+<img src="../static/plots_img/wykres3.jpg" alt="Wykres wielomianu y = -x(x + 2)(x - 3)" class="wykres">
+<p class="podpis">Wykres wielomianu \(y = -x(x + 2)(x - 3)\)</p>
+
+
+<p>Przykład 4: \(y = -x^2(x + 1)^2(x - 2)\)</p>
+<img src="../static/plots_img/wykres4.jpg" alt="Wykres wielomianu y = -x^2(x + 1)^2(x - 2)" class="wykres">
+<p class="podpis">Wykres wielomianu \(y = -x^2(x + 1)^2(x - 2)\)</p>
+
+
+<h3>Ważne uwagi:</h3>
+<p>Warto zauważyć, że gdy pierwiastek jest nieparzystej krotności, to wielomian zmienia w nim znak (z ujemnego na dodatni, bądź też odwrotnie). Natomiast w przypadku pierwiastków parzystej krotności wielomian nie zmienia znaku.</p>
+<p>Znak wielomianu w przedziale (a, ∞), gdzie a jest największym pierwiastkiem wielomianu, jest taki sam jak znak przy współczynniku o najwyższej potędze.</p>
+<p>Suma współczynników wielomianu jest równa W(1). Jeśli suma współczynników wielomianu wynosi 0, to W(1) = 0, czyli liczba 1 jest pierwiastkiem wielomianu.</p>
+
+
+<h2>Nierówności wielomianowe</h2>
+
+<h3>Teoria</h3>
+<p>Aby rozwiązać nierówność wielomianową, należy rozłożyć wielomian, aby poznać jego miejsca zerowe. Dzięki temu możemy narysować przybliżony wykres wielomianu i określić dla jakich argumentów zostaje spełniona nierówność.</p>
+
+<h3>Przykłady</h3>
+<p>Przykład 1: Rozwiązanie nierówności wielomianowej</p>
+<p>Rozważmy nierówność: W(x) < 0, gdzie \(W(x) = x^2 - 4x + 3\).</p>
+<p>Aby rozwiązać tę nierówność, zaczynamy od rozłożenia wielomianu na czynniki: \(W(x) = (x - 1)(x - 3)\).</p>
+<p>Następnie rysujemy wykres wielomianu:</p>
+<img src="../static/plots_img/1.jpg" alt="Wykres wielomianu W(x) = x^2 - 4x + 3" class="wykres">
+<p class="podpis">Wykres wielomianu \(W(x) = x^2 - 4x + 3\)</p>
+<p>Na podstawie wykresu widzimy, że wielomian jest mniejszy od zera w przedziale (1, 3).</p>
+<p>Więc rozwiązaniem nierówności jest: 1 < x < 3.</p>
+
+<p>Przykład 2: Rozwiązanie innej nierówności wielomianowej</p>
+<p>Rozważmy nierówność: W(x) > 0, gdzie \(W(x) = x^3 + 5x^2 - 4x - 20\).</p>
+<p>Zacznijmy od rozłożenia wielomianu na czynniki: \(W(x) = (x + 5)(x + 2)(x - 2)\).</p>
+<p>Narysujmy wykres wielomianu:</p>
+<img src="../static/plots_img/2.jpg" alt="Wykres wielomianu W(x) = x^3 + 5x^2 - 4x - 20" class="wykres">
+<p class="podpis">Wykres wielomianu \(W(x) = x^3 + 5x^2 - 4x - 20\)</p>
+<p>Na podstawie wykresu widzimy, że wielomian jest większy od zera w przedziałach (-5, -2) i (2, ∞).</p>
+
+<h3>Podsumowanie</h3>
+<p>Rozwiązanie nierówności wielomianowych polega na rozłożeniu wielomianu na czynniki, narysowaniu wykresu wielomianu i określeniu przedziałów, dla których nierówność jest spełniona.</p>
+
+</body>
+
+</html>

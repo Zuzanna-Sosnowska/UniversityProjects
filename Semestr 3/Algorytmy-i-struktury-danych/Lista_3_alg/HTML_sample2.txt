@@ -1,0 +1,88 @@
+<!doctype html>
+<html  >
+
+
+<head           >
+    <title>Marcin Mi&#347;kiewicz</title>
+    <!-- <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script> -->
+    <!-- <script>MathJax = {tex: {inlineMath: [['$', '$'], ['\\(', '\\)']]}}</script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js <view-source:https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js>"></script>
+    <link rel="stylesheet" href="./assets/style.css <view-source:http://prac.im.pwr.edu.pl/~miskiewicz/assets/style.css>">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <meta charset="UTF-8">
+</head>
+
+
+
+<body>
+    <div class="page" id="page">
+        <div id="left-column">
+            <div id="header-content" style="display: grid;">
+                <div id="header-text-container">
+                    <h1 id="name">Marcin Mi&#347;kiewicz</h1>
+                    <p lang="pl" style="font-style: italic;" class="University">
+                        Politechnika Wroc&#322;awska<br>
+                        Wydzia&#322; Matematyki
+                    </p>
+                    <p lang="en" style="font-style: italic;" class="University">
+                        Wroc&#322;aw University of Science and Technology<br>
+                        Faculty of Pure and Applied Mathematics
+                    </p>
+                </div>
+                <div id="nav-column">
+                    <button id="switch-lang" class="button nav-child">
+                        <span lang="pl">EN</span>
+                        <span lang="en">PL</span>
+                    </button>
+                    <button id="switch-theme" class="button nav-child" onclick="change_theme()">
+                        <span lang="light" id="light"><img src="./svgs/moon-solid.svg <view-source:http://prac.im.pwr.edu.pl/~miskiewicz/svgs/moon-solid.svg>" alt="Dark mode"  class="icon" style="height: 1rem; opacity: 0.7"/></span>
+                        <span lang="dark"  id="dark" ><img src="./svgs/sun-solid.svg <view-source:http://prac.im.pwr.edu.pl/~miskiewicz/svgs/sun-solid.svg>"  alt="Light mode" class="icon" style="height: 1rem; opacity: 0.7"/></span>
+                    </button>
+                </div>
+            </div>
+            <div class="content">
+                <hr>
+
+                <h3 lang="pl">Kontakt</h3>
+                <h3 lang="en">Contact</h3>
+                <p lang="pl">
+                    budynek C-19, pok&#243;j A.4.3 <br> 
+                    Wyb. Wyspia&#324;skiego 27 <br>
+                    50-370 Wroc&#322;aw, Polska
+                </p>
+                <p lang="en">
+                    building C-19, room A.4.3 <BR> 
+                    Wyb. Wyspia&#324;skiego 27 <br>
+                    50-370 Wroc&#322;aw, Poland
+                </p>
+                <p lang="pl"> Konsultacje: TBA</p>
+                <p lang="en"> Office hours: TBA</p>
+                <p style="color: rgb(93, 0, 255)">&#10022;&nbsp; marcin.miskiewicz[at]pwr.edu.pl</p>
+                <hr>
+                <h3 lang="pl">Prowadzone kursy</h3>
+                <h3 lang="en">Courses taught</h3>
+                <table>
+                    <tr>
+                        <td> &#10022;&nbsp;2022/23&nbsp;&nbsp;&#x2600;</td>
+                        <td>Pakiety Matematyczne (L)</td>
+                    </tr>
+                    <tr>
+                        <td> &#10022;&nbsp;2023/24&nbsp;&nbsp;<b>&#x2744;</b></td>
+                        <td>Algorytmy i struktury danych (L)</td>
+                    </tr>
+                </table>
+                
+            </div>
+            <footer id="footer"><hr> Copyright &copy; 2023 Marcin Mi&#347;kiewicz</footer>    
+        </div>
+
+        <div id="right-column">
+            <canvas id="canvas"></canvas>
+        </div>
+    </div>
+    <!-- scripts -->
+    <script src="scripts/lang_switch.js <view-source:http://prac.im.pwr.edu.pl/~miskiewicz/scripts/lang_switch.js>"></script>  
+    <script src="scripts/theme_switch.js <view-source:http://prac.im.pwr.edu.pl/~miskiewicz/scripts/theme_switch.js>"></script>
+    <script src="scripts/canvas_action.js <view-source:http://prac.im.pwr.edu.pl/~miskiewicz/scripts/canvas_action.js>"></script>    
+  
+</body>
