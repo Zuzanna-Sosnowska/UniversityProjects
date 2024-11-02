@@ -1,47 +1,50 @@
 from Matrix import Matrix, Vector
 import copy
+import numpy as np
 
 
 def calculate_upper_triangular_matrix(A: Matrix, b: Vector):
     A, b = copy.deepcopy(A), copy.deepcopy(b)
-    n = len(A)
+    n = A.number_of_rows()
     for column in range(n):
-        find_nullyfying_row = False
+        find_nullifying_row = False
         for row in range(column, n):
-            if A[row][column] != 0 and find_nullyfying_row == False:
+            if A[row][column] != 0 and find_nullifying_row == False:
                 A.swap_rows(row, column)
-                # swap_rows(A, row, column)
-                # swap_elements(b, row, column)
-                c = True
+                b[row], b[column] = b[column], b[row]
+                find_nullifying_row = True
                 continue
-            if find_nullyfying_row:
-                a = calculate_nullify_multiplier_for_index(
+            if find_nullifying_row:
+                multiplier = row_nullify_multiplier_for_column(
                     row_to_nullify=A[row],
                     base_row=A[column],
-                    index=column
+                    column=column
                 )
-                A[row] = A[row] - a * A[column]
-                # a = multiply_and_change_rows(A[row], A[column], column)
-                b[row] = b[row] - a * b[column]
-                # change_elements(b, row, column, a)
-        if not find_nullyfying_row:
+                A[row] = A[row] - multiplier * A[column]
+                b[row] = b[row] - multiplier * b[column]
+        if not find_nullifying_row:
             raise ValueError("Macierz osobliwa")
+    return A, b
 
 
-def calculate_nullify_multiplier_for_index(row_to_nullify, base_row, index):
-    return row_to_nullify[index] / base_row[index]
+def row_nullify_multiplier_for_column(row_to_nullify, base_row, column):
+    return row_to_nullify[column] / base_row[column]
 
 
-# def gaussian_solver(A: Matrix, b: Vector) -> Vector:
-#     A, b = copy.deepcopy(A), copy.deepcopy(b)
-#     calculate_upper_triangular_matrix(A, b)
-#     solutions = [0 for _ in range(len(A))]
-#     solutions[-1] = b[-1] / A[-1][-1]
-#     for i in range(len(A)-2, -1, -1):
-#         # a_copy =  multiply_columns([A[j][i+1] for j in range(len(A))], solutions[i+1], i+1)
-#         # subtract_columns(b, a_copy, i+1)
-#         solutions[i] = b[i] / A[i][i]
-#     return solutions
+def gaussian_solver(A: Matrix, b: Vector) -> Vector:
+    A, b = calculate_upper_triangular_matrix(A, b)
+    solutions = Vector([0 for _ in range(A.number_of_rows())])
+    for column in range(A.number_of_columns()-1, -1, -1):
+        for row in range(column-1, -1, -1):
+            multiplier = row_nullify_multiplier_for_column(
+                row_to_nullify=A[row],
+                base_row=A[column],
+                column=column
+            )
+            A[row] = A[row] - multiplier * A[column]
+            b[row] = b[row] - multiplier * b[column]
+        solutions[column] = b[column] / A[column][column]
+    return solutions
 
 
 def main():
@@ -53,11 +56,10 @@ def main():
          [0, 1, -1, 1, -1]])
 
     b = Vector([1, 1, -4, -2, -1])
-
-    print(A)
-    print(b)
-
-    print(calculate_upper_triangular_matrix(A, b))
+    A1, b1 = calculate_upper_triangular_matrix(A, b)
+    print(gaussian_solver(A, b))
+    print('\n')
+    print(np.linalg.solve(A, b))
 
 
 if __name__ == "__main__":
