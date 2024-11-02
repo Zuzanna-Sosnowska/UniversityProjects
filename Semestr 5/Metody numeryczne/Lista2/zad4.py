@@ -12,6 +12,8 @@ def main():
     print(functions.gaussian_solver(A, b))
     print(scipy.linalg.solve(A, b))
 
+    solutions = functions.gaussian_solver(A, b)
+    print(solutions)
 
 if __name__ == '__main__':
     main()
