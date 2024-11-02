@@ -1,6 +1,5 @@
 from collections.abc import Iterable
 import copy
-import numpy as np
 
 
 class Vector(Iterable):
@@ -139,24 +138,23 @@ class Matrix:
             det *= matrix[i][i]
         return det
 
+    def multiply_matrix_by_vector(self, vector: Vector) -> Vector:
+        if self.number_of_columns() != len(vector):
+            raise ValueError("Vector length must be of equal to number of columns in matrix")
+        new_vector = Vector()
+        for row in self.__rows:
+            new_vector.append(sum(row * vector))
+        return new_vector
 
 def test_vector():
     v1 = Vector([1, 2, 3])
-    v2 = Vector([4, 5, 6])
-    print(v1)
-    print(v2)
-    print(v1 + v2)
-    for el in v1:
-        print(el)
-    print(v2 * (2 * v1))
+
 
 def test_matrix():
     A = [[-1, 2, 3], [4, 5, 6], [7, 8, 9]]
     m1 = Matrix.create_from_list(A)
-    # m1.upper_triangular_matrix()
     print(m1)
-    # print(m1.det())
-    # print(np.linalg.det(m2))
+
 
 if __name__ == '__main__':
     test_matrix()
