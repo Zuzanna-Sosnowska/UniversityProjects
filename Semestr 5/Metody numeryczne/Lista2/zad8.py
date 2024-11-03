@@ -1,19 +1,21 @@
 import scipy
-import functions
 import numpy as np
-import copy
+from Matrix import Matrix
+
 
 
 def main():
-    A = [[2, -1, 0, 0, 0, 0],
+    A = Matrix.create_from_list(
+        [[2, -1, 0, 0, 0, 0],
          [-1, 2, -1, 0, 0, 0],
          [0, -1, 2, -1, 0, 0],
          [0, 0, -1, 2, -1, 0],
          [0, 0, 0, -1, 2, -1],
-         [0, 0, 0, 0, -1, 5]]
-    B = copy.deepcopy(A)
-    print(np.array(functions.inverse_matrix(B)), '\n')
+         [0, 0, 0, 0, -1, 5]])
+
+    print(A.inv())
     print(scipy.linalg.inv(A))
+    print(np.linalg.inv(A))
 
 
 if __name__ == '__main__':

@@ -146,15 +146,32 @@ class Matrix:
             new_vector.append(sum(row * vector))
         return new_vector
 
-def test_vector():
-    v1 = Vector([1, 2, 3])
-
-
-def test_matrix():
-    A = [[-1, 2, 3], [4, 5, 6], [7, 8, 9]]
-    m1 = Matrix.create_from_list(A)
-    print(m1)
-
-
-if __name__ == '__main__':
-    test_matrix()
+    def inv(self):
+        if self.number_of_rows() != self.number_of_columns():
+            raise ValueError("Matrix must be of equal length")
+        matrix = copy.deepcopy(self)
+        n = matrix.number_of_rows()
+        I = Matrix.identity_matrix(n)
+        for column in range(n):
+            find_nullifying_row = False
+            for row in range(column, n):
+                if matrix[row][column] != 0 and find_nullifying_row == False:
+                    matrix.swap_rows(row, column)
+                    I.swap_rows(row, column)
+                    find_nullifying_row = True
+                    continue
+                if find_nullifying_row:
+                    modifier = matrix[row][column] / matrix[column][column]
+                    matrix[row] = matrix[row] - modifier * matrix[column]
+                    I[row] = I[row] - modifier * I[column]
+            if not find_nullifying_row:
+                raise ValueError("Macierz osobliwa")
+        for column in range(n - 1, -1, -1):
+            for row in range(column):
+                modifier = matrix[row][column] / matrix[column][column]
+                matrix[row] = matrix[row] - modifier * matrix[column]
+                I[row] = I[row] - modifier * I[column]
+            modifier = 1 / matrix[column][column]
+            I[column] = modifier * I[column]
+            matrix[column] = modifier * matrix[column]
+        return I

@@ -1,6 +1,5 @@
 from Matrix import Matrix, Vector
 import copy
-import numpy as np
 
 
 def calculate_upper_triangular_matrix(A: Matrix, b: Vector):
@@ -46,21 +45,3 @@ def gaussian_solver(A: Matrix, b: Vector) -> Vector:
         solutions[column] = b[column] / A[column][column]
     return solutions
 
-
-def main():
-    A = Matrix.create_from_list(
-        [[0, 0, 2, 1, 2],
-         [0, 1, 0, 2, -1],
-         [1, 2, 0, -2, 0],
-         [0, 0, 0, -1, 1],
-         [0, 1, -1, 1, -1]])
-
-    b = Vector([1, 1, -4, -2, -1])
-    A1, b1 = calculate_upper_triangular_matrix(A, b)
-    print(gaussian_solver(A, b))
-    print('\n')
-    print(np.linalg.solve(A, b))
-
-
-if __name__ == "__main__":
-    main()

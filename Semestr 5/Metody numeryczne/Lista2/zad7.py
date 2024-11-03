@@ -1,5 +1,6 @@
 import scipy
-import functions
+import Funkcje
+from Matrix import Matrix, Vector
 
 
 def main():
@@ -12,7 +13,10 @@ def main():
          [-1, 4, -7, -1, 1, 1, -1, -3],
          [-1, 3, 4, 1, 3, -4, 7, 6]]
     b = [0, 12, -5, 3, -25, -26, 9, -7]
-    print(functions.gaussian_solver(A, b))
+
+    A = Matrix.create_from_list(A)
+    b = Vector(b)
+    print(Funkcje.gaussian_solver(A, b))
     print(scipy.linalg.solve(A, b))
 
 

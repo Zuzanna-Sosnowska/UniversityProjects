@@ -1,6 +1,7 @@
-import functions
 import copy
 import scipy
+import Funkcje
+from Matrix import Matrix, Vector
 
 
 def polynomial_coeffs_lst(x0):
@@ -14,11 +15,11 @@ def main():
     for x, y in points:
         A.append(polynomial_coeffs_lst(x))
         b.append(y)
-    A2 = copy.deepcopy(A)
-    b2 = copy.deepcopy(b)
+    A = Matrix.create_from_list(A)
+    b = Vector(b)
 
-    print(functions.gaussian_solver(A, b))
-    print(scipy.linalg.solve(A2, b2))
+    print(Funkcje.gaussian_solver(A, b))
+    print(scipy.linalg.solve(A, b))
 
 
 if __name__ == '__main__':
