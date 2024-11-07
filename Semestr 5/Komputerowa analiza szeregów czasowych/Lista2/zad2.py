@@ -9,6 +9,7 @@ def generate_normal(n, sigma):
 def calculate_b1_estimator(x, y):
     return np.sum(x * y) / np.sum(x ** 2)
 
+
 def theoretical_b1_variance(x, sigma):
     return sigma ** 2 / np.sum(x ** 2)
 
@@ -28,7 +29,6 @@ def main():
 
     for i in range(u):
         x = np.linspace(0, 10, n)
-        b0_est = np.zeros(M)
         b1_est = np.zeros(M)
         for j in range(M):
             e = generate_normal(n, sigma[i])
@@ -40,6 +40,7 @@ def main():
 
         b1_emp_var[i] = np.var(b1_est)
         b1_theor_var[i] = theoretical_b1_variance(x, sigma[i])
+
 
     plt.plot(np.linspace(0, 10, u), b1_emp_mean)
     plt.plot(np.linspace(0, 10, u), b1_theor_mean, color='r')
