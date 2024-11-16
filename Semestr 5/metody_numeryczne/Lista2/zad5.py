@@ -1,7 +1,6 @@
-import copy
 import scipy
 import Funkcje
-from Matrix import Matrix, Vector
+from matrix.Matrix import Matrix, Vector
 
 
 def polynomial_coeffs_lst(x0):

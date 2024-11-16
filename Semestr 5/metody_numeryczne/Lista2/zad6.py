@@ -1,7 +1,6 @@
-import scipy
-import numpy as np
 import Funkcje
-from Matrix import Matrix, Vector
+from matrix.Matrix import Matrix, Vector
+
 
 def main():
     A = Matrix.create_from_list(

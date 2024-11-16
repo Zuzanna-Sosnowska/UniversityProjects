@@ -1,6 +1,6 @@
 import scipy
 import Funkcje
-from Matrix import Matrix, Vector
+from matrix.Matrix import Matrix, Vector
 
 
 def main():

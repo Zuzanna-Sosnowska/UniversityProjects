@@ -1,6 +1,6 @@
 import scipy
 import numpy as np
-from Matrix import Matrix
+from matrix.Matrix import Matrix
 
 
 def main():

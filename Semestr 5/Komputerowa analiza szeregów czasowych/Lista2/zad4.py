@@ -2,12 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import scipy.stats as stats
 import seaborn as sns
-
-
-def calculate_b1_and_b0_estimator(x, y):
-    b1 = np.sum((x - np.mean(x)) * y) / np.sum(np.power(x - np.mean(x), 2))
-    b0 = np.mean(y) - b1 * np.mean(x)
-    return b1, b0
+import zad3
 
 
 def var_estimator(y, y_r):
@@ -32,7 +27,7 @@ def generate_w1_w0(n, x, miu, sigma, b0, b1):
         e = np.random.normal(miu, sigma, n)
         y = b0 + b1 * x + e
         y_r = b0 + b1 * x
-        b1_est, b0_est = calculate_b1_and_b0_estimator(x=x, y=y)
+        b1_est, b0_est = zad3.calculate_b1_and_b0_estimator(x=x, y=y)
         w1[j] = (b0_est - b0) / SE_b0(x, y, y_r)
         w2[j] = (b1_est - b1) / SE_b1(x, y, y_r)
     return w1, w2

@@ -1,7 +1,6 @@
 import scipy
 import numpy as np
-from Matrix import Matrix
-
+from matrix.Matrix import Matrix
 
 
 def main():
@@ -14,6 +13,7 @@ def main():
          [0, 0, 0, 0, -1, 5]])
 
     print(A.inv())
+    print(np.array(A.inv()))
     print(scipy.linalg.inv(A))
     print(np.linalg.inv(A))
 
