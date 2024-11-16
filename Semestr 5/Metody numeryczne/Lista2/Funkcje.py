@@ -1,4 +1,4 @@
-from Matrix import Matrix, Vector
+from matrix.Matrix import Matrix, Vector
 import copy
 
 
@@ -45,3 +45,7 @@ def gaussian_solver(A: Matrix, b: Vector) -> Vector:
         solutions[column] = b[column] / A[column][column]
     return solutions
 
+
+if __name__ == "__main__":
+    A = Matrix([1, 2, 3], [4, 5, 6], [7, 8, 9])
+    print(A)
