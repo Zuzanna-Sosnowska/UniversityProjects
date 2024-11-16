@@ -1,6 +1,8 @@
 import scipy
 import Funkcje
-from matrix.Matrix import Matrix, Vector
+from matrix.Matrix import Matrix
+from matrix.Vector import Vector
+
 
 def main():
     A = [[0, 0, 2, 1, 2],

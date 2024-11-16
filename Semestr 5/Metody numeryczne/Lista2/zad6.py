@@ -1,5 +1,6 @@
 import Funkcje
-from matrix.Matrix import Matrix, Vector
+from matrix.Matrix import Matrix
+from matrix.Vector import Vector
 
 
 def main():
