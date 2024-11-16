@@ -1,5 +1,4 @@
 from numpy import float32, float64
-
 from matrix.Matrix import Matrix
 from matrix.Vector import Vector
 
@@ -36,7 +35,7 @@ def calculate_machine_unit():
     u = 1
     while 1 + u != 1:
         u /= 2
-    return u
+    return 2 * u
 
 
 def doolittle_method(A: Matrix, b: Vector):
