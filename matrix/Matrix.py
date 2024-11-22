@@ -8,6 +8,13 @@ class Matrix:
         self.__rows = []
 
     @staticmethod
+    def from_vectors(vectors):
+        m = Matrix()
+        for vec in vectors:
+            m.add_row(vec)
+        return m
+
+    @staticmethod
     def create_from_list(list_of_lists):
         m = Matrix()
         for row in list_of_lists:
@@ -42,6 +49,27 @@ class Matrix:
 
     def __rmul__(self, other):
         return Matrix.create_from_list([other * row for row in self.__rows])
+
+    def __sub__(self, other):
+        if self.number_of_rows() != other.number_of_rows() and self.number_of_columns() != other.number_of_columns():
+            raise ValueError("Matrix has different number of rows and columns")
+        res = self.copy()
+        for i in range(self.number_of_rows()):
+            res[i] -= other[i]
+
+        return res
+
+    def __add__(self, other):
+        if self.number_of_rows() != other.number_of_rows() and self.number_of_columns() != other.number_of_columns():
+            raise ValueError("Matrix has different number of rows and columns")
+        res = self.copy()
+        for i in range(self.number_of_rows()):
+            res[i] += other[i]
+
+        return res
+
+    def copy(self):
+        return Matrix.from_vectors([row.copy() for row in self.__rows])
 
     def add_row(self, new_row):
         if len(new_row) != self.number_of_columns() and not self.is_empty():
@@ -143,4 +171,6 @@ class Matrix:
 
 if __name__ == "__main__":
     A = Matrix.create_from_list([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
-    print(A.norm())
+    B = Matrix.create_from_list([[1, 1, 1], [1, 1, 1], [1, 1, 1]])
+    print(A - B)
+    print(A)
