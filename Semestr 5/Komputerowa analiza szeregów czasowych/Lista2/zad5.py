@@ -1,6 +1,11 @@
 import numpy as np
 import matplotlib.pyplot as plt
-import zad3
+
+
+def calculate_b1_and_b0_estimator(x, y):
+    b1 = np.sum((x - np.mean(x)) * y) / np.sum(np.power(x - np.mean(x), 2))
+    b0 = np.mean(y) - b1 * np.mean(x)
+    return b1, b0
 
 
 def wyznaczanie_punktu_zmiany_rezimu(x):
@@ -16,8 +21,8 @@ def wyznaczanie_punktu_zmiany_rezimu(x):
         stat_2 = c[k:]
         a1 = np.arange(1, k+1, 1)
         a2 = np.arange(k+1, n+1, 1)
-        b1_est_stat_1, b0_est_stat_1 = zad3.calculate_b1_and_b0_estimator(a1, stat_1)
-        b1_est_stat_2, b0_est_stat_2 = zad3.calculate_b1_and_b0_estimator(a2, stat_2)
+        b1_est_stat_1, b0_est_stat_1 = calculate_b1_and_b0_estimator(a1, stat_1)
+        b1_est_stat_2, b0_est_stat_2 = calculate_b1_and_b0_estimator(a2, stat_2)
         v[k-2] = (np.sum(np.power(stat_1 - (b0_est_stat_1 + b1_est_stat_1 * a1), 2)) +
                   np.sum(np.power(stat_2 - (b0_est_stat_2 + b1_est_stat_2 * a2), 2)))
     return v
@@ -86,11 +91,12 @@ def boxplots(L):
     ax.set_xticklabels(data.keys())
     plt.show()
 
-def main():
-    # plots()
 
-    boxplots(L=400)
-    boxplots(L=50)
+def main():
+    plots()
+
+    # boxplots(L=400)
+    # boxplots(L=50)
 
 if __name__ == '__main__':
     main()
