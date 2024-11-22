@@ -1,57 +1,18 @@
-from collections.abc import Iterable
 import copy
-
-
-class Vector(Iterable):
-    def __init__(self, elems=None):
-        if elems is None:
-            elems = []
-        self.__elems = elems
-
-    def __getitem__(self, key):
-        return self.__elems[key]
-
-    def __setitem__(self, key, val):
-        self.__elems[key] = val
-
-    def __len__(self):
-        return len(self.__elems)
-
-    def __iter__(self):
-        return self.__elems.__iter__()
-
-    def __add__(self, other):
-        if len(self) != len(other):
-            raise ValueError("Vector must be of equal length")
-        return Vector([a + b for a, b in zip(self, other)])
-
-    def __neg__(self):
-        return Vector([-a for a in self.__elems])
-
-    def __sub__(self, other):
-        if len(self) != len(other):
-            raise ValueError("Vector must be of equal length")
-        return Vector([a - b for a, b in zip(self, other)])
-
-    def __mul__(self, other):
-        if len(self) != len(other):
-            raise ValueError("Vector must be of equal length")
-        return Vector([a * b for a, b in zip(self, other)])
-
-    def __rmul__(self, other):
-        return Vector([other * a for a in self.__elems])
-
-    def __str__(self):
-        comma_list = ''.join([str(a) + ', ' for a in self.__elems])
-        return '<' + comma_list[:-2] + '>'
-
-    def append(self, val):
-        self.__elems.append(val)
+from matrix.Vector import Vector
 
 
 class Matrix:
+
     def __init__(self):
         self.__rows = []
+
+    @staticmethod
+    def from_vectors(vectors):
+        m = Matrix()
+        for vec in vectors:
+            m.add_row(vec)
+        return m
 
     @staticmethod
     def create_from_list(list_of_lists):
@@ -85,6 +46,30 @@ class Matrix:
 
     def __str__(self):
         return ''.join([str(row) + '\n' for row in self.__rows])
+
+    def __rmul__(self, other):
+        return Matrix.create_from_list([other * row for row in self.__rows])
+
+    def __sub__(self, other):
+        if self.number_of_rows() != other.number_of_rows() and self.number_of_columns() != other.number_of_columns():
+            raise ValueError("Matrix has different number of rows and columns")
+        res = self.copy()
+        for i in range(self.number_of_rows()):
+            res[i] -= other[i]
+
+        return res
+
+    def __add__(self, other):
+        if self.number_of_rows() != other.number_of_rows() and self.number_of_columns() != other.number_of_columns():
+            raise ValueError("Matrix has different number of rows and columns")
+        res = self.copy()
+        for i in range(self.number_of_rows()):
+            res[i] += other[i]
+
+        return res
+
+    def copy(self):
+        return Matrix.from_vectors([row.copy() for row in self.__rows])
 
     def add_row(self, new_row):
         if len(new_row) != self.number_of_columns() and not self.is_empty():
@@ -175,3 +160,17 @@ class Matrix:
             I[column] = modifier * I[column]
             matrix[column] = modifier * matrix[column]
         return I
+
+    def norm(self):
+        max = 0
+        for row in self.__rows:
+            if row.norm() > max:
+                max = row.norm()
+        return max
+
+
+if __name__ == "__main__":
+    A = Matrix.create_from_list([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+    B = Matrix.create_from_list([[1, 1, 1], [1, 1, 1], [1, 1, 1]])
+    print(A - B)
+    print(A)
