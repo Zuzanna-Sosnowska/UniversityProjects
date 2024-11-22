@@ -44,11 +44,17 @@ class Vector(Iterable):
         comma_list = ''.join([str(a) + ', ' for a in self.__elems])
         return '<' + comma_list[:-2] + '>'
 
+    def copy(self):
+        return Vector([*self.__elems])
+
     def append(self, val):
         self.__elems.append(val)
 
     def norm(self):
         return sum(map(lambda x: abs(x), self.__elems))
+
+    def norm_inf(self):
+        return max(map(lambda x: abs(x), self.__elems))
 
 
 if __name__ == '__main__':
