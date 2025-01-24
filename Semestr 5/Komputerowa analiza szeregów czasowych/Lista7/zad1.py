@@ -51,5 +51,6 @@ def main():
     plt.boxplot([sigma2_est_lst], tick_labels=['sigma 2'])
     plt.show()
 
+
 if __name__ == '__main__':
     main()
