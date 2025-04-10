@@ -1,5 +1,3 @@
-import math
-
 x = input("Wprowadź tekst: ")
 y = input("Wprowadź tekst: ")
 len(x)
