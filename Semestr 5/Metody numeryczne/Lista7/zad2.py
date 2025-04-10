@@ -15,10 +15,11 @@ def main():
 
     h = 0.1
     stop = 0.5
+    n = int(stop // h + 1)
     initial_cond = (0, 1)
 
-    euler = ode.euler_method(f, initial_cond, h, stop)
-    runge_kutta_4rd_order = ode.runge_kutta_4rd_order(f, initial_cond, h, stop)
+    euler = ode.euler_method(f, initial_cond, h, n)
+    runge_kutta_4rd_order = ode.runge_kutta_4th_order(f, initial_cond, h, n)
     x = np.arange(0, stop + h, h)
     solution = analytical_solution(x)
 

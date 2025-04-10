@@ -2,9 +2,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-def euler_method(func, point, h, stop):
+def euler_method(func, point, h, n):
     x0, y0 = point
-    n = int((stop - x0) / h)
     xs = [x0]
     ys = [y0]
     x, y = x0, y0
@@ -17,9 +16,8 @@ def euler_method(func, point, h, stop):
     return xs, ys
 
 
-def runge_kutta_2nd_order(func, point, h, stop):
+def runge_kutta_2nd_order(func, point, h, n):
     x0, y0 = point
-    n = int((stop - x0) / h)
     xs = [x0]
     ys = [y0]
     x, y = x0, y0
@@ -33,9 +31,8 @@ def runge_kutta_2nd_order(func, point, h, stop):
     return xs, ys
 
 
-def runge_kutta_4rd_order(func, point, h, stop):
+def runge_kutta_4th_order(func, point, h, n):
     x0, y0 = point
-    n = int((stop - x0) / h)
     xs = [x0]
     ys = [y0]
     x, y = x0, y0
