@@ -1,7 +1,11 @@
 import math
 
 def obj_kuli():
-    r = int(input("Podaj promien kuli:"))
+    """
+    Funkcja oblicza objętość kuli
+    :return: Objętość kuli o zadanym promieniu
+    """
+    r = float(input("Podaj promien kuli:"))
     if r <= 0:
         print("Błąd, zły promień")
         return
