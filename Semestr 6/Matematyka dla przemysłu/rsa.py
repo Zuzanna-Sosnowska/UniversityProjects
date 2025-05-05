@@ -47,28 +47,29 @@ def generate_rsa_keys(p: int, q: int):
     return n, e, d
 
 
-def encrypt(n, e, m):
+def encrypt(n: int, e, m):
     return pow(m, e, n)
 
 
 def decrypt(n, d, c):
     return pow(c, d, n)
 
+
 if __name__ == '__main__':
     p = sp.randprime(10 ** 40, 2 * 10 ** 40)
     q = sp.randprime(10 ** 40, 2 * 10 ** 40)
     n, e, d = generate_rsa_keys(p, q)
-    message = "Ala ma kota"
+    message = "Bartek ma psa"
     print("Nadana wiadomość:", message)
 
     m = int(message.encode("utf-8").hex(), 16)
 
     c = encrypt(n, e, m)
     print("Szyfrogram w postaci liczby:", c)
-    m = decrypt(n, d, c)
-    print("Odszyfrowana wiadomość w postaci liczby:", m)
+    decrypted = decrypt(n, d, c)
+    print("Odszyfrowana wiadomość w postaci liczby:", decrypted)
 
-    tmp = hex(m)[2:]
+    tmp = hex(decrypted)[2:]
     if len(tmp) % 2 == 1:
         tmp = "0" + tmp
     message = bytes.fromhex(tmp).decode("utf-8")
