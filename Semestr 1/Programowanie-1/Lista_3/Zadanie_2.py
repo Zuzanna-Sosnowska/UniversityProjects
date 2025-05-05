@@ -17,3 +17,4 @@ rysuj1 = list(slownik.keys())
 rysuj2 = list(slownik.values())
 plt.bar(rysuj1[0:10], rysuj2[0:10])
 plt.show()
+
