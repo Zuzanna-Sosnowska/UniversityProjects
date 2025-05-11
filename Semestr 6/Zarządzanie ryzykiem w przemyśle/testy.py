@@ -1,6 +1,4 @@
 import numpy as np
-import pandas as pd
-from arch import arch_model
 from pandas import read_csv, to_datetime, Series
 from typing import Literal
 from arch import arch_model
@@ -19,15 +17,17 @@ def likelihood_function(L, mu, c0, c, b, s0, type: Literal['t', 'norm'] = 'norm'
 
 
 def sigma(L, c0, c1, b1, s0):
-    sigma_list = [s0]
+    sigma_list = [s0 ** 2]
     for i in range(1, len(L)):
-        sigma_list.append(c0 + c1 * np.power(L[i-1], 2) + b1 * np.power(sigma_list[i - 1], 2))
-    return sigma_list
+        sigma_list.append(c0 + c1 * np.power(L[i-1], 2) + b1 * sigma_list[i - 1])
+    return np.sqrt(sigma_list)
 
 
 def maximize_likelihood_function(L, type: Literal['t', 'norm'] = 'norm'):
     return optimize.minimize(lambda x: -likelihood_function(L, c0 = x[0], c = x[1], b = x[2], s0 = x[3], mu = x[4], type=type),
-                             np.array([1, 1, 1, 2.37, 0]))
+                             np.array([2.37, 0, 0, 2.37, 0]))
+
+# 1.231e+00  2.146e-01  5.629e-01 -3.101e-01  1.161e-01
 
 
 def main():
@@ -48,7 +48,12 @@ def main():
     # Unormowane dane lub oryginalne zmiany procentowe:
     data = np.array(zmiany_procentowe)
 
-    print(maximize_likelihood_function(data))
+    # print(maximize_likelihood_function(data))
+
+    # Dopasuj model GARCH(1, 1)
+    model = arch_model(data, vol='Garch', p=2, q=2)
+    res = model.fit(disp="off")
+    print(res)
 
 
 if __name__ == '__main__':
