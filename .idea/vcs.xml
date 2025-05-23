@@ -2,5 +2,6 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Semestr 6/Matematyka dla przemysłu/schnorr-sig" vcs="Git" />
   </component>
 </project>
