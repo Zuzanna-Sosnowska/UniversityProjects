@@ -3,6 +3,7 @@ from typing import Literal
 from scipy.stats import norm, t, chi2
 from pandas import read_csv, to_datetime, Series
 from arch import arch_model
+from collections import Counter
 
 
 def main():
@@ -27,14 +28,17 @@ def main():
     # Obliczanie strat
     L = -np.array(zmiany_procentowe)
 
-    test1 = unconditional_coverage_test(L, 0.05, 't')
-    test2 = unconditional_coverage_test(L, 0.05, 'historical')
-    test3 = unconditional_coverage_test(L, 0.05, 'weighted')
-    test4 = unconditional_coverage_test(L, 0.05, 'garch')
-    print(test1)
-    print(test2)
-    print(test3)
-    print(test4)
+    # test1 = unconditional_coverage_test(L, 0.05, 't')
+    # test2 = unconditional_coverage_test(L, 0.05, 'historical')
+    # test3 = unconditional_coverage_test(L, 0.05, 'weighted')
+    # test4 = unconditional_coverage_test(L, 0.05, 'garch')
+    # print(test1)
+    # print(test2)
+    # print(test3)
+    # print(test4)
+
+    christoff_test = christoffersen_test(L, 0.05, 'garch')
+    print(christoff_test)
 
 
 def weighted_historical_VaR(data, alpha, lambd=0.96):
@@ -98,6 +102,32 @@ def unconditional_coverage_test(data, alpha, method: Literal['t', 'norm', 'histo
     LR = - np.log(((1-alpha) ** i0 * alpha ** i1) / ((1 - p0) ** i0 * p0 ** i1))
     p_value = chi2.cdf(LR, df=1)
     return p_value
+
+
+# TO DO:
+
+def christoffersen_test(data, alpha, method: Literal['t', 'norm', 'historical', 'weighted', 'garch'] = 'historical'):
+    I_alpha = backtesting(data, alpha, method=method)       # wektor 0 i 1 z rozkładu wielomianowego z pr sukcesu 1
+    I = list(zip(I_alpha[:-1], I_alpha[1:]))
+    I = Counter(I)                                          # słownik z listą wystąpień (0, 0), (0, 1), (1, 0) i (1, 1)
+    pi = np.matrix([[I[(0, 0)] / (I[(0, 0)] + I[(0, 1)]), I[(0, 1)] / (I[(0, 0)] + I[(0, 1)])],
+                    [I[(1, 0)] / (I[(1, 0)] + I[(1, 1)]), I[(1, 1)] / (I[(1, 0)] + I[(1, 1)])],])
+
+    pi_est = np.mean(I_alpha)
+
+    PI_est = np.matrix([[1 - pi_est, pi_est], [1 - pi_est, pi_est]])
+
+    def L(pi: np.matrix):
+        return ((1 - pi[0, 1]) ** I[(0, 0)] * pi[0, 1] ** I[(0, 1)] *
+                (1 - pi[1, 1]) ** I[(1, 0)] * pi[1, 1] ** I[(1, 1)])
+
+    LR = - np.log(L(PI_est) / L(pi))
+    p_value = chi2.cdf(LR, df=1)
+    return p_value
+
+
+def berkovitz_test(data):
+    pass
 
 
 if __name__ == '__main__':

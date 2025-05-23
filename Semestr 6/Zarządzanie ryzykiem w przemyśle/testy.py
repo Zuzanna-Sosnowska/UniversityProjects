@@ -27,8 +27,6 @@ def maximize_likelihood_function(L, type: Literal['t', 'norm'] = 'norm'):
     return optimize.minimize(lambda x: -likelihood_function(L, c0 = x[0], c = x[1], b = x[2], s0 = x[3], mu = x[4], type=type),
                              np.array([2.37, 0, 0, 2.37, 0]))
 
-# 1.231e+00  2.146e-01  5.629e-01 -3.101e-01  1.161e-01
-
 
 def main():
     dane_notowania = read_csv('dane\\notowania.csv')
