@@ -5,14 +5,7 @@
       <excludeFolder url="file://$MODULE_DIR$/.venv" />
       <excludeFolder url="file://$MODULE_DIR$/.venv2" />
     </content>
-    <orderEntry type="jdk" jdkName="Python 3.10 (pythonProject)" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="Python 3.13 (UniversityProjects)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-  </component>
-  <component name="PyNamespacePackagesService">
-    <option name="namespacePackageFolders">
-      <list>
-        <option value="$MODULE_DIR$/Semestr 5" />
-      </list>
-    </option>
   </component>
 </module>
